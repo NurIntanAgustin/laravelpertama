@@ -29,7 +29,8 @@
                 </div>
             </div>
         </nav>
-        <button type="button" a href="/friends/create" class="card-link btn-primary mb-3">Tambah Teman</button>
+        <h4> LIST OF FRIEND </h4>
+        <a href="/friends/create" class="card-link btn-primary mb-3">Tambah Teman</a>
         <br>
         @yield('content')
 
