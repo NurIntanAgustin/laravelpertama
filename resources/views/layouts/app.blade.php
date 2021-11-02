@@ -14,23 +14,23 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-success p-2 text-dark bg-opacity-50 mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Laravel Pertama</a>
+                <a class="navbar-brand" href="#"><b>Laravel Pertama</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        <a class="nav-link" href="/friends">Friends</a>
+                        <a class="nav-link active" aria-current="page" href="/"><b>Home</b></a>
+                        <a class="nav-link active" href="/friends"><b>Friends</b></a>
+                        <a class="nav-link active" href="/groups"><b>Groups</b></a>
 
                     </div>
                 </div>
             </div>
         </nav>
-        <h4> LIST OF FRIEND </h4>
-        <a href="/friends/create" class="card-link btn-primary mb-3">Tambah Teman</a>
+
         <br>
         @yield('content')
 

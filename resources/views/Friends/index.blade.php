@@ -3,13 +3,16 @@
 @section('title', 'Friends')
 
 @section('content')
+<h3>LIST OF MY FRIENDS</h3>
 <div class="row">
-
+    <a href="/friends/create" class="card-link">Tambah Teman</a>
     @foreach ($friends as $friend)
     <div class="col-sm-4">
-        <div class="card border-primary mb-3" style="max-width: 18rem;">
-
-            <div class="card-body text-primary">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header bg-success text-light">
+                <b>Friends</b>
+            </div>
+            <div class="card-body text-dark">
                 <a href="/friends/{{$friend['id']}}" class="card-title">{{ $friend['nama'] }}</a>
                 <h6 class="card-subtitle mb-2 text-muted">{{ $friend['no_tlp'] }}</h6>
                 <p class="card-text">{{ $friend['alamat'] }}</p>
