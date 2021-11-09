@@ -31,6 +31,7 @@ class CobaController extends Controller
 
         $friends = new Friends;
 
+        $friends->groups_id = $request->groups_id;
         $friends->nama = $request->nama;
         $friends->no_tlp = $request->no_tlp;
         $friends->alamat = $request->alamat;
@@ -61,6 +62,7 @@ class CobaController extends Controller
             'instagram' => 'required',
         ]);
         Friends::find($id)->update([
+            'groups_id' => $request->groups_id,
             'nama' => $request->nama,
             'no_tlp' => $request->no_tlp,
             'alamat' => $request->alamat,

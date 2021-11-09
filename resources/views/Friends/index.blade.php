@@ -4,8 +4,9 @@
 
 @section('content')
 <h3>LIST OF MY FRIENDS</h3>
+<a href="/friends/create" class="card-link btn-primary">Tambah Teman</a>
+<div class="mb-3"></div>
 <div class="row">
-    <a href="/friends/create" class="card-link">Tambah Teman</a>
     @foreach ($friends as $friend)
     <div class="col-sm-4">
         <div class="card border-success mb-3" style="max-width: 18rem;">
@@ -30,9 +31,8 @@
     </div>
     @endforeach
 </div>
-<div>
-    {{ $friends-> links() }}
+{{ $friends-> links() }}
 </div>
-</div>
+<div class="mb-3"></div>
 @endsection
 </div>

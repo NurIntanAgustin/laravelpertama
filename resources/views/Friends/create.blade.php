@@ -5,6 +5,7 @@
 @section('content')
 <form action="/friends" method="POST">
     @csrf
+    <input type="hidden" name="groups_id" value="0">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nama</label>
         <input type="text" class="form-control" id="exampleInputEmail1" name="nama" aria-describedby="emailHelp" value="{{old('nama')}}">
