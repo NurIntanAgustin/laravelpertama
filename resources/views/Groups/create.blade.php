@@ -3,6 +3,10 @@
 @section('title', 'Groups')
 
 @section('content')
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Tambah Group</h1>
+</div>
 <form action="/groups" method="POST">
     @csrf
     <div class="mb-3">

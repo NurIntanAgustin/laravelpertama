@@ -1,15 +1,29 @@
 @extends('layouts.app')
 
-@section('title', 'Cobaaaaa')
+@section('title', $group['name'])
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <h3>Nama Teman : {{ $friend['nama'] }} </h3>
-        <h3>No Tlp : {{ $friend['no_tlp'] }} </h3>
-        <h3>Alamat : {{ $friend['alamat'] }} </h3>
-        <h3>Jenis Kelamin : {{ $friend['jenis_kelamin'] }} </h3>
-        <h3>Instagram : {{ $friend['instagram'] }} </h3>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">GROUP DETAIL</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <!-- Content Column -->
+    <div class="col-lg-4 mb-4">
+        <!-- Project Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ $group['name'] }}</h6>
+                <p class="card-text">{{ $group['description'] }}</p>
+            </div>
+            <div class="card-body">
+                <h6>Jumlah Anggota Masuk : {{ $group['total_users_join'] }}</h6>
+                <h6>Jumlah Anggota Saat Ini: {{ $jumlah_anggota }} </h6>
+                <h6>Jumlah Anggota Keluar : {{ $group['total_users_leave'] }}</h6>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

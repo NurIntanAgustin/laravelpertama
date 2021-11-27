@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Groups;
 use App\Models\Friends;
+use App\Models\Riwayat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class GroupsController extends Controller
 {
@@ -61,8 +64,9 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        $group = Groups::where('id', $id)->first();
-        return view('groups.show', ['group' => $group]);
+        $groups = Groups::where('id', $id)->first();
+        $jumlah_anggota = Friends::where('groups_id', '=', $groups->id)->get()->count();
+        return view('groups.show', ['group' => $groups, 'jumlah_anggota' => $jumlah_anggota]);
     }
 
     /**
@@ -86,7 +90,7 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        groups::find($id)->update([
+        Groups::whereId($id)->update([
             'name' => $request->name,
             'description' => $request->description
         ]);
@@ -119,15 +123,38 @@ class GroupsController extends Controller
 
         ]);
 
-        return redirect('/groups/addmember/' . $id);
+        $group = Groups::find($id);
+        $group->total_users_join = $group->total_users_join + 1;
+        $group->save();
+
+        $riwayat = new Riwayat();
+        $riwayat->friends_id = $request->friend_id;
+        $riwayat->groups_id = $id;
+        $riwayat->activity = 1;
+        $riwayat->date = Carbon::now();
+        $riwayat->save();
+
+        return redirect('/groups');
     }
     public function deleteaddmember(Request $request, $id)
     {
         //dd($id);
-        Friends::find($id)->update([
-            'groups_id' => 0
 
-        ]);
+        $friend = Friends::find($id);
+
+        $group = Groups::find($friend->groups_id);
+        $group->total_users_leave = $group->total_users_leave + 1;
+        $group->save();
+
+        $riwayat = new Riwayat();
+        $riwayat->friends_id = $id;
+        $riwayat->groups_id = $friend->groups_id;
+        $riwayat->activity = 0;
+        $riwayat->date = Carbon::now();
+        $riwayat->save();
+
+        $friend->groups_id = 0;
+        $friend->save();
 
         return redirect('/groups');
     }

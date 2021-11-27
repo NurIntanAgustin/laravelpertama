@@ -17,6 +17,8 @@ class CreateGroupsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->integer('total_users_join')->default(0);
+            $table->integer('total_users_leave')->default(0);
             $table->timestamps();
         });
     }

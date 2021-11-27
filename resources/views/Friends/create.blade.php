@@ -3,6 +3,10 @@
 @section('title', 'Friends')
 
 @section('content')
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Tambah Teman</h1>
+</div>
 <form action="/friends" method="POST">
     @csrf
     <input type="hidden" name="groups_id" value="0">

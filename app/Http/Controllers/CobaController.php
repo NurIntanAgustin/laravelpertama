@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Friends;
+use App\Models\Riwayat;
 
 class CobaController extends Controller
 {
@@ -44,8 +45,9 @@ class CobaController extends Controller
     }
     public function show($id)
     {
-        $friends = Friends::where('id', $id)->first();
-        return view('friends.show', ['friend' => $friends]);
+        $friends = Friends::with('groups')->where('id', $id)->first();
+        $riwayats = Riwayat::with('friends', 'groups')->where('friends_id', $id)->get();
+        return view('friends.show', ['friend' => $friends, 'riwayats' => $riwayats]);
     }
     public function edit($id)
     {
